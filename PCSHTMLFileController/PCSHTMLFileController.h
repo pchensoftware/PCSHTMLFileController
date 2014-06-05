@@ -8,6 +8,8 @@
 
 @interface PCSHTMLFileController : UIViewController
 
+@property (nonatomic, readonly) UIWebView *webview;
+@property (nonatomic, readonly) UIActivityIndicatorView *loadingSpinner;
 @property (nonatomic, strong) NSString *filePath;
 
 @end
