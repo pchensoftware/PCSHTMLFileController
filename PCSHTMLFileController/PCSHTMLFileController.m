@@ -17,6 +17,7 @@
 
 - (id)init {
    if ((self = [super init])) {
+      self.automaticallyAdjustsScrollViewInsets = NO;
    }
    return self;
 }
@@ -35,6 +36,11 @@
    [self.view addSubview:self.webview];
    
    [self.webview loadHTMLString:[NSString stringWithContentsOfFile:self.filePath encoding:NSUTF8StringEncoding error:nil] baseURL:nil];
+}
+
+- (void)viewDidLayoutSubviews {
+   self.webview.scrollView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0);
+   self.webview.scrollView.scrollIndicatorInsets = self.webview.scrollView.contentInset;
 }
 
 //====================================================================================================
